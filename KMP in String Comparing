@@ -1,0 +1,68 @@
+//KMP
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int next[20];
+char S[20],T[20];
+int slen, tlen;
+
+//先把最重要的NEXT[N]设置一个函数构造出来
+void getNext()
+{
+    int i = 0;
+    int j = -1;
+    next[0]= -1;
+    while(j<tlen)
+    {
+        if(j==-1 || T[i]==T[j])
+        {
+            i++;
+            j++;
+            next[i]= j;
+        }
+        else
+            j = next[j];
+    }
+}
+
+//在设置一个大的KMP函数
+int KMP_Place()
+{
+    int i = 0, j = 0;
+    getNext();
+
+    while(i < slen && j < tlen)
+    {
+        if(j == -1 || S[i] == T[j])
+        {
+            i++;
+            j++;
+        }
+        else
+            j = next[j];
+    }
+    if(j >= tlen)
+        return i - tlen;
+    else
+        return -1;
+}
+
+
+
+int main()
+{
+    /*
+    printf("Input string S: ");
+    scanf("%s", S);
+    printf("Input string T: ");
+    scanf("%s", T);
+    */
+    strcpy(S,"ABCDE");
+    strcpy(T,"DEAB");
+    slen = strlen(S);
+    tlen = strlen(T);
+    printf("字符串T在字符串S中首次出现的位置%d\n",KMP_Place());
+    return 0;
+}
