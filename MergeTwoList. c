@@ -46,11 +46,11 @@ List Read()
     List node = ( List )malloc( sizeof( struct Node ) );
     node->Data = number;
     node->Next = NULL;
-    last->Next = node;
-    last = node;
+    p->Next = node;
+    p = node;
     len--;
   }
-  return h;
+  return Head;
 }
 
 List Merge( List L1, List L2 ){
