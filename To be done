@@ -1,0 +1,23 @@
+//https://pta.patest.cn/pta/test/3512/exam/4/question/62614
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node* PNode;
+struct Node{
+    int address;
+    int data;
+    int nextAddress;
+    PNode next;
+};
+typedef PNode List;
+
+void 
+
+int main()
+{
+    int start,N,K;
+    scanf("%d %d %d",&start,&N,&K);
+
+    printf("Hello world!\n");
+    return 0;
+}
